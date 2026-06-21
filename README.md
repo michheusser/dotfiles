@@ -14,8 +14,10 @@ sudo apt install stow
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 
-## Setup on a new machine
+## Tmux Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+## Setup on a new machine
 git clone <your-repo-url> ~/dotfiles
 cd ~/dotfiles
 stow zsh
