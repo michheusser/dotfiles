@@ -1,0 +1,16 @@
+# Theme
+theme = Aizen Dark 
+
+# Font
+font-size = 13
+
+# Window
+window-padding-x = 8
+window-padding-y = 8
+
+# Shell
+shell-integration = zsh
+
+# Keybindings - consistent with Linux
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
