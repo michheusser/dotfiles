@@ -1,5 +1,8 @@
 # Prompt Style
-PROMPT='%F{green}%n@%m%f %F{blue}%1~%f %# '
+#PROMPT='%F{green}%n@%m%f %F{blue}%1~%f %# '
+
+# Starship prompt
+eval "$(starship init zsh)"
 
 # Completion system
 autoload -Uz compinit && compinit

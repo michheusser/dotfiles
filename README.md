@@ -55,3 +55,15 @@ Create `~/.zshrc.local` on each machine for anything not shared across machines.
 ```bash
 export OPENSSL_ROOT_DIR=/opt/homebrew/opt/openssl@3
 ```
+
+### Starship
+
+Mac:
+```bash
+brew install starship
+```
+
+Ubuntu:
+```bash
+curl -sS https://starship.rs/install.sh | sh
+```
