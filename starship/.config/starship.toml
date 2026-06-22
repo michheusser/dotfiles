@@ -4,6 +4,7 @@ format = """
 [](red)\
 $os\
 $username\
+$hostname\
 [](bg:peach fg:red)\
 $directory\
 [](bg:yellow fg:peach)\
@@ -20,6 +21,7 @@ $java\
 $kotlin\
 $haskell\
 $python\
+$nix_shell\
 [](fg:green bg:sapphire)\
 $conda\
 [](fg:sapphire bg:lavender)\
@@ -62,6 +64,11 @@ show_always = true
 style_user = "bg:red fg:crust"
 style_root = "bg:red fg:crust"
 format = '[ $user]($style)'
+
+[hostname]
+ssh_only = true
+style = "bg:red fg:crust"
+format = '[@$hostname]($style)'
 
 [directory]
 style = "bg:peach fg:crust"
@@ -134,6 +141,12 @@ format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
 symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
+
+[nix_shell]
+disabled = false
+symbol = "❄️ "
+style = "bg:green fg:crust"
+format = '[[ $symbol$name ](fg:crust bg:green)]($style)'
 
 [docker_context]
 symbol = ""
