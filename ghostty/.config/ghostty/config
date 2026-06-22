@@ -10,7 +10,9 @@ window-padding-y = 8
 
 # Shell
 shell-integration = zsh
+command = /usr/bin/zsh -l -i
 
 # Keybindings - consistent with Linux
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
+
