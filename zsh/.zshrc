@@ -1,7 +1,7 @@
 # Prompt Style
 PROMPT='%F{green}%n@%m%f %F{blue}%1~%f %# '
 
-# Completion system — must be initialized before zstyle settings take effect
+# Completion system
 autoload -Uz compinit && compinit
 
 # Case-insensitive completion
@@ -12,7 +12,6 @@ setopt AUTO_LIST
 unsetopt LIST_AMBIGUOUS
 
 # History search with arrow keys
-# Uses terminfo for terminal-independence, with guards in case terminfo is unavailable
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -20,19 +19,28 @@ zle -N down-line-or-beginning-search
 [[ -n "${terminfo[kcuu1]}" ]] && bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
 [[ -n "${terminfo[kcud1]}" ]] && bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 
-# fzf
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+# fzf shell integration (works on Mac and Linux, requires fzf 0.48.0+)
+if [[ -x $(command -v fzf) ]]; then
+  eval "$(fzf --zsh)"
+fi
 
-# Colors
-if [ -x /usr/bin/dircolors ]; then
+# Colors and ls aliases (OS-aware)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias ls='ls -G'
+  alias ll='ls -alFG'
+  alias la='ls -AG'
+  alias l='ls -CFG'
+else
+  if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias ll='ls -alF'
-    alias la='ls -A'
-    alias l='ls -CF'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  fi
+  alias ls='ls --color=auto'
+  alias ll='ls -alF --color=auto'
+  alias la='ls -A --color=auto'
+  alias l='ls -CF --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # Machine-specific config (not in repo)

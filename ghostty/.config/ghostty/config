@@ -1,5 +1,6 @@
 # Theme
-theme = Aizen Dark 
+#theme = Aizen Dark 
+theme = Catppuccin Mocha
 
 # Font
 font-size = 13
@@ -10,7 +11,7 @@ window-padding-y = 8
 
 # Shell
 shell-integration = zsh
-command = /usr/bin/zsh -l -i
+# command = /usr/bin/zsh -l -i
 
 # Keybindings - consistent with Linux
 keybind = ctrl+shift+c=copy_to_clipboard
