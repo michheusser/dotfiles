@@ -1,4 +1,4 @@
-# Prompt Style
+# Prmpt Style
 #PROMPT='%F{green}%n@%m%f %F{blue}%1~%f %# '
 
 # Starship prompt
@@ -52,3 +52,8 @@ source ~/.zshrc.local 2>/dev/null
 # Load plugins — zsh-syntax-highlighting must be last
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Direnv hook (if exists)
+if command -v direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
