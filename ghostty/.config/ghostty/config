@@ -6,7 +6,8 @@ background = #11111b
 #background = #181824
 
 # Font
-font-size = 13
+font-size = 10
+#font-family = JetBrainsMono Nerd Font
 
 # Window
 window-padding-x = 8
