@@ -210,9 +210,9 @@ overlay0 = "#6c7086"
 surface2 = "#585b70"
 surface1 = "#45475a"
 surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+mantle = "#060608"
+base = "#040406"
+crust = "#020203"
 
 [palettes.catppuccin_frappe]
 rosewater = "#f2d5cf"

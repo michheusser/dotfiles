@@ -1,9 +1,7 @@
 # Theme
 #theme = Aizen Dark 
 theme = Catppuccin Mocha
-background = #11111b
-#background = #1e1e29
-#background = #181824
+background = #060608
 
 # Font
 font-size = 10
