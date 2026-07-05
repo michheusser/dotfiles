@@ -34,7 +34,7 @@ local TOKYONIGHT = {
   metadata = "#e0af68",
   operator = "#89ddff",
   bracket = "#c0caf5",
-  punct = "#9aa5ce",
+  punct = "#c0caf5",
   label = "#c0caf5",
   enummember = "#e0af68",
   concept = "#2ac3de",
@@ -45,17 +45,17 @@ local TOKYONIGHT = {
 }
 
 local DARCULA = {
-  text = "#A9B7C6",
+  --text = "#B4B4B4",
+  text = "#D4D7DD",
   keyword = "#CC7832",
   func_def = "#FFC66D",
-  func_call = "#A9B7C6",
-  type = "#769AA5",
-  typeparam = "#507874",
+  func_call = "#D4D7DD",
+  type = "#B5B6E3",
+  typeparam = "#B5B6E3",
   field = "#9876AA",
-  param = "#A9B7C6",
-  local_ = "#A9B7C6",
-  namespace = "#A9B7C6",
-  string = "#6A8759",
+  param = "#D4D7DD",
+  local_ = "#D4D7DD",
+  namespace = "#B5B6E3",
   escape = "#CC7832",
   number = "#6897BB",
   boolean = "#CC7832",
@@ -68,10 +68,10 @@ local DARCULA = {
   metadata = "#BBB529",
   operator = "#A9B7C6",
   bracket = "#A9B7C6",
-  punct = "#CC7832",
+  punct = "#A9B7C6",
   label = "#A9B7C6",
   enummember = "#9876AA",
-  concept = "#769AA5",
+  concept = "#A9B7C6",
   inlayhint = "#787878",
   todo = "#A8C023",
   error = "#BC3F3C",
@@ -115,7 +115,7 @@ return {
           hl["@variable.parameter.builtin"] = { fg = P.param }
           hl["@variable.member"] = { fg = P.field }
           -- constants ------------------------------------------------------
-          hl["@constant"] = { fg = P.constant, italic = true }
+          hl["@constant"] = { fg = P.constant, italic = false } -- flip to true for Darcula-spec italic constants
           hl["@constant.builtin"] = { fg = P.builtin }
           hl["@constant.macro"] = { fg = P.macro }
           -- modules / namespaces -------------------------------------------
@@ -271,7 +271,9 @@ return {
           hl["cppStructure"] = { fg = P.keyword }
           hl["cppStorageClass"] = { fg = P.keyword }
           hl["cppAccess"] = { fg = P.keyword } -- public/private/protected
-          hl["cppOperator"] = { fg = P.keyword } -- new/delete/sizeof/etc.
+          hl["cppOperator"] = { fg = P.keyword } -- new/delete/sizeof (word-operators)
+          hl["cppCppOperator"] = { fg = P.punct }
+          hl["cOperator"] = { fg = P.operator }
           hl["cppCast"] = { fg = P.keyword } -- static_cast etc.
           hl["cppConstant"] = { fg = P.constant }
           hl["cppNumber"] = { fg = P.number }
@@ -314,10 +316,10 @@ return {
         ["@lsp.type.class"] = { fg = P.type },
         ["@lsp.type.struct"] = { fg = P.type },
         ["@lsp.type.enum"] = { fg = P.type },
-        ["@lsp.type.enumMember"] = { fg = P.enummember, italic = true },
+        ["@lsp.type.enumMember"] = { fg = P.enummember, italic = false }, -- set italic=true for Darcula-spec
         ["@lsp.type.type"] = { fg = P.type },
         ["@lsp.type.typeAlias"] = { fg = P.type },
-        ["@lsp.type.typeParameter"] = { fg = P.typeparam, italic = true },
+        ["@lsp.type.typeParameter"] = { fg = P.typeparam, italic = false }, -- flip true for slanted template params
         ["@lsp.type.concept"] = { fg = P.concept },
         ["@lsp.type.interface"] = { fg = P.type },
         ["@lsp.type.macro"] = { fg = P.macro },
@@ -332,22 +334,22 @@ return {
         -- -- @lsp.typemod.function.* ----------------------------------------
         ["@lsp.typemod.function.declaration"] = { fg = P.func_def }, -- DEFINITION
         ["@lsp.typemod.function.definition"] = { fg = P.func_def },
-        ["@lsp.typemod.function.static"] = { fg = P.func_def, italic = true },
+        ["@lsp.typemod.function.static"] = { fg = P.func_def, italic = false },
         ["@lsp.typemod.function.defaultLibrary"] = { fg = P.func_call },
-        ["@lsp.typemod.function.virtual"] = { fg = P.func_def, italic = true },
+        ["@lsp.typemod.function.virtual"] = { fg = P.func_def, italic = false },
         ["@lsp.typemod.function.deprecated"] = { fg = P.func_call, strikethrough = true },
         ["@lsp.typemod.function.constructorOrDestructor"] = { fg = P.type },
         -- -- @lsp.typemod.method.* ------------------------------------------
         ["@lsp.typemod.method.declaration"] = { fg = P.func_def },
         ["@lsp.typemod.method.definition"] = { fg = P.func_def },
-        ["@lsp.typemod.method.static"] = { fg = P.func_def, italic = true },
+        ["@lsp.typemod.method.static"] = { fg = P.func_def, italic = false },
         ["@lsp.typemod.method.defaultLibrary"] = { fg = P.func_call },
-        ["@lsp.typemod.method.virtual"] = { fg = P.func_def, italic = true },
+        ["@lsp.typemod.method.virtual"] = { fg = P.func_def, italic = false },
         ["@lsp.typemod.method.deprecated"] = { fg = P.func_call, strikethrough = true },
         ["@lsp.typemod.method.constructorOrDestructor"] = { fg = P.type },
         -- -- @lsp.typemod.variable.* ----------------------------------------
-        ["@lsp.typemod.variable.static"] = { fg = P.field, italic = true },
-        ["@lsp.typemod.variable.readonly"] = { fg = P.constant, italic = true },
+        ["@lsp.typemod.variable.static"] = { fg = P.field, italic = false },
+        ["@lsp.typemod.variable.readonly"] = { fg = P.constant, italic = false }, -- const local; italic=true for Darcula-spec
         ["@lsp.typemod.variable.readonly.static"] = { fg = P.constant, bold = true, italic = true },
         ["@lsp.typemod.variable.globalScope"] = { fg = P.local_ },
         ["@lsp.typemod.variable.fileScope"] = { fg = P.local_ },
@@ -358,22 +360,22 @@ return {
         ["@lsp.typemod.parameter.readonly"] = { fg = P.param },
         ["@lsp.typemod.parameter.declaration"] = { fg = P.param },
         -- -- @lsp.typemod.property.* ----------------------------------------
-        ["@lsp.typemod.property.static"] = { fg = P.field, italic = true },
+        ["@lsp.typemod.property.static"] = { fg = P.field, italic = false },
         ["@lsp.typemod.property.readonly"] = { fg = P.field },
         ["@lsp.typemod.property.readonly.static"] = { fg = P.field, bold = true, italic = true },
         ["@lsp.typemod.property.declaration"] = { fg = P.field },
         ["@lsp.typemod.property.deprecated"] = { fg = P.field, strikethrough = true },
         -- -- @lsp.typemod.class / struct / enum.* ---------------------------
         ["@lsp.typemod.class.declaration"] = { fg = P.type },
-        ["@lsp.typemod.class.defaultLibrary"] = { fg = P.type },
+        ["@lsp.typemod.class.defaultLibrary"] = { fg = P.text }, -- stdlib class (sockaddr_in, std::string) = plain text like CLion; P.type to color
         ["@lsp.typemod.struct.declaration"] = { fg = P.type },
-        ["@lsp.typemod.struct.defaultLibrary"] = { fg = P.type },
-        ["@lsp.typemod.enum.defaultLibrary"] = { fg = P.type },
-        ["@lsp.typemod.enumMember.readonly"] = { fg = P.enummember, italic = true },
+        ["@lsp.typemod.struct.defaultLibrary"] = { fg = P.text },
+        ["@lsp.typemod.enum.defaultLibrary"] = { fg = P.text },
+        ["@lsp.typemod.enumMember.readonly"] = { fg = P.enummember, italic = false },
         -- -- @lsp.typemod.type.* (incl. auto/deduced) -----------------------
         ["@lsp.typemod.type.declaration"] = { fg = P.type },
         ["@lsp.typemod.type.deduced"] = { fg = P.builtin }, -- auto
-        ["@lsp.typemod.type.defaultLibrary"] = { fg = P.type, italic = true }, -- DEFAULT_PREDEFINED_SYMBOL italic
+        ["@lsp.typemod.type.defaultLibrary"] = { fg = P.text }, -- stdlib types (size_t, uint16_t) = plain text like CLion; P.type to color
         ["@lsp.typemod.type.defaultLibrary.deduced"] = { fg = P.builtin },
         ["@lsp.typemod.class.deduced"] = { fg = P.builtin },
         -- -- @lsp.typemod.namespace.* ---------------------------------------
