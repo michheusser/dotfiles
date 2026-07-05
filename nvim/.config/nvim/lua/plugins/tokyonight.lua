@@ -78,7 +78,7 @@ local DARCULA = {
   warning = "#BBB529",
 }
 
---local ACTIVE = TOKYONIGHT
+-- local ACTIVE = TOKYONIGHT
 local ACTIVE = DARCULA
 
 local STYLE = "night" -- night | storm | moon
@@ -102,7 +102,8 @@ return {
         },
         on_colors = function(c)
           -- Darken toward CLion when using DARCULA (uncomment):
-          -- c.bg = "#2B2B2B"; c.bg_dark = "#1E1E1E"
+          c.bg = "#060608"
+          c.bg_dark = "#060608"
         end,
 
         -- == TREESITTER LAYER - every capture group, explicit ==================
@@ -114,16 +115,16 @@ return {
           hl["@variable.parameter.builtin"] = { fg = P.param }
           hl["@variable.member"] = { fg = P.field }
           -- constants ------------------------------------------------------
-          hl["@constant"] = { fg = P.constant }
+          hl["@constant"] = { fg = P.constant, italic = true }
           hl["@constant.builtin"] = { fg = P.builtin }
           hl["@constant.macro"] = { fg = P.macro }
           -- modules / namespaces -------------------------------------------
           hl["@module"] = { fg = P.namespace }
           hl["@module.builtin"] = { fg = P.namespace }
-          hl["@label"] = { fg = P.label }
+          hl["@label"] = { fg = P.label, bold = true, underline = true, sp = "#808080" }
           -- strings --------------------------------------------------------
           hl["@string"] = { fg = P.string }
-          hl["@string.documentation"] = { fg = P.doccomment }
+          hl["@string.documentation"] = { fg = P.doccomment, italic = true }
           hl["@string.regexp"] = { fg = P.string }
           hl["@string.escape"] = { fg = P.escape }
           hl["@string.special"] = { fg = P.escape }
@@ -177,11 +178,16 @@ return {
           hl["@punctuation.special"] = { fg = P.escape }
           -- comments -------------------------------------------------------
           hl["@comment"] = { fg = P.comment }
-          hl["@comment.documentation"] = { fg = P.doccomment }
+          hl["@comment.documentation"] = { fg = P.doccomment, italic = true }
           hl["@comment.error"] = { fg = P.error }
           hl["@comment.warning"] = { fg = P.warning }
           hl["@comment.todo"] = { fg = P.todo, bold = true }
           hl["@comment.note"] = { fg = P.doccomment }
+          -- Darcula DEFAULT_DOC_COMMENT_TAG = bold+italic (@param, @return, \brief)
+          hl["@comment.documentation.tag"] =
+            { fg = P.doccomment, bold = true, italic = true, underline = true, sp = "#629755" }
+          hl["@string.documentation.tag"] =
+            { fg = P.doccomment, bold = true, italic = true, underline = true, sp = "#629755" }
           -- preproc (regex/legacy C family) --------------------------------
           hl["@preproc"] = { fg = P.preproc }
           hl["@define"] = { fg = P.preproc }
@@ -205,7 +211,7 @@ return {
           hl["Statement"] = { fg = P.keyword } -- throw/if/for etc. base
           hl["Conditional"] = { fg = P.keyword } -- if/else/switch/case
           hl["Repeat"] = { fg = P.keyword } -- for/while/do
-          hl["Label"] = { fg = P.label } -- case/default labels
+          hl["Label"] = { fg = P.label, bold = true, underline = true, sp = "#808080" } -- case/default labels
           hl["Operator"] = { fg = P.operator }
           hl["Keyword"] = { fg = P.keyword }
           hl["Exception"] = { fg = P.keyword } -- try/catch/throw
@@ -296,7 +302,11 @@ return {
       local roles = {
         -- -- @lsp.type.<kind> (plain semantic types) ------------------------
         ["@lsp.type.variable"] = { fg = P.local_ },
+        ["@lsp.typemod.variable.usedAsMutableReference"] = { fg = P.local_, underline = true, sp = "#707D95" },
+        ["@lsp.typemod.variable.usedAsMutablePointer"] = { fg = P.local_, underline = true, sp = "#707D95" },
         ["@lsp.type.parameter"] = { fg = P.param },
+        ["@lsp.typemod.parameter.usedAsMutableReference"] = { fg = P.param, underline = true, sp = "#707D95" },
+        ["@lsp.typemod.parameter.usedAsMutablePointer"] = { fg = P.param, underline = true, sp = "#707D95" },
         ["@lsp.type.property"] = { fg = P.field },
         ["@lsp.type.function"] = { fg = P.func_call }, -- a CALL
         ["@lsp.type.method"] = { fg = P.func_call }, -- a method CALL
@@ -337,8 +347,8 @@ return {
         ["@lsp.typemod.method.constructorOrDestructor"] = { fg = P.type },
         -- -- @lsp.typemod.variable.* ----------------------------------------
         ["@lsp.typemod.variable.static"] = { fg = P.field, italic = true },
-        ["@lsp.typemod.variable.readonly"] = { fg = P.constant },
-        ["@lsp.typemod.variable.readonly.static"] = { fg = P.constant },
+        ["@lsp.typemod.variable.readonly"] = { fg = P.constant, italic = true },
+        ["@lsp.typemod.variable.readonly.static"] = { fg = P.constant, bold = true, italic = true },
         ["@lsp.typemod.variable.globalScope"] = { fg = P.local_ },
         ["@lsp.typemod.variable.fileScope"] = { fg = P.local_ },
         ["@lsp.typemod.variable.functionScope"] = { fg = P.local_ },
@@ -350,6 +360,7 @@ return {
         -- -- @lsp.typemod.property.* ----------------------------------------
         ["@lsp.typemod.property.static"] = { fg = P.field, italic = true },
         ["@lsp.typemod.property.readonly"] = { fg = P.field },
+        ["@lsp.typemod.property.readonly.static"] = { fg = P.field, bold = true, italic = true },
         ["@lsp.typemod.property.declaration"] = { fg = P.field },
         ["@lsp.typemod.property.deprecated"] = { fg = P.field, strikethrough = true },
         -- -- @lsp.typemod.class / struct / enum.* ---------------------------
@@ -362,7 +373,7 @@ return {
         -- -- @lsp.typemod.type.* (incl. auto/deduced) -----------------------
         ["@lsp.typemod.type.declaration"] = { fg = P.type },
         ["@lsp.typemod.type.deduced"] = { fg = P.builtin }, -- auto
-        ["@lsp.typemod.type.defaultLibrary"] = { fg = P.type },
+        ["@lsp.typemod.type.defaultLibrary"] = { fg = P.type, italic = true }, -- DEFAULT_PREDEFINED_SYMBOL italic
         ["@lsp.typemod.type.defaultLibrary.deduced"] = { fg = P.builtin },
         ["@lsp.typemod.class.deduced"] = { fg = P.builtin },
         -- -- @lsp.typemod.namespace.* ---------------------------------------
