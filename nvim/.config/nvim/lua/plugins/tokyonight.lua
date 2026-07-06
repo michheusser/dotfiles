@@ -56,6 +56,7 @@ local DARCULA = {
   param = "#D4D7DD",
   local_ = "#D4D7DD",
   namespace = "#B5B6E3",
+  string = "#8EA765",
   escape = "#CC7832",
   number = "#6897BB",
   boolean = "#CC7832",

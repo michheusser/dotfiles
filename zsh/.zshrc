@@ -57,3 +57,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if command -v direnv &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
+
+# Remove '/' from word characters so Alt+Backspace deletes path segments individually
+WORDCHARS="${WORDCHARS:s|/||}"
