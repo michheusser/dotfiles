@@ -5,10 +5,10 @@ background = #060608
 
 # Font
 font-size = 10
-font-style = Regular
+font-style = SemiBold
 font-style-bold = Bold
 font-family = JetBrainsMono Nerd Font
-adjust-cell-height = 20%
+adjust-cell-height = 30%
 
 # Window
 window-padding-x = 8
@@ -16,7 +16,7 @@ window-padding-y = 8
 
 # Shell
 shell-integration = zsh
-command = /usr/bin/zsh -l -i
+command = tmux new-session -A -s main
 
 # Keybindings - consistent with Linux
 keybind = ctrl+shift+c=copy_to_clipboard

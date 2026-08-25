@@ -133,3 +133,6 @@ export GIT_AUTHOR_NAME="$(git config user.name)"
 export GIT_AUTHOR_EMAIL="$(git config user.email)"
 export GIT_COMMITTER_NAME="$(git config user.name)"
 export GIT_COMMITTER_EMAIL="$(git config user.email)"
+
+# Machine-specific config (not in repo)
+source ~/.bashrc.local 2>/dev/null
