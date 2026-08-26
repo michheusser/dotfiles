@@ -19,7 +19,7 @@
       "Bash(git reset:*)",
       "Bash(git clean:*)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "default"
   },
   "hooks": {
     "UserPromptSubmit": [
