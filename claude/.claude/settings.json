@@ -2,7 +2,6 @@
   "permissions": {
     "allow": [
       "Read",
-      "Edit",
       "WebSearch",
       "WebFetch",
       "Bash(git diff)",
@@ -20,7 +19,19 @@
       "Bash(git reset:*)",
       "Bash(git clean:*)"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/research-context.sh"
+          }
+        ]
+      }
+    ]
   },
   "outputStyle": "Precise",
   "model": "opus[1m]",
