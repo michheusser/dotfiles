@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "WebSearch",
+      "WebFetch",
+      "Bash(git diff)",
+      "Bash(git diff:*)",
+      "Bash(git status)",
+      "Bash(git log:*)",
+      "Bash(git log)"
+    ],
+    "deny": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git push)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git reset:*)",
+      "Bash(git clean:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "outputStyle": "Precise",
+  "model": "opus[1m]",
+  "theme": "dark",
+  "tui": "fullscreen"
+}
