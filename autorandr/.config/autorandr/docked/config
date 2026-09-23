@@ -1,0 +1,25 @@
+output DP-0
+off
+output DP-1
+off
+output HDMI-0
+off
+output DP-4
+off
+output DP-2
+off
+output DP-3
+crtc 2
+filter bilinear
+mode 5120x2160
+pos 0x0
+rate 59.98
+transform 0.778595,0.000000,0.000000,0.000000,0.778595,0.000000,0.000000,0.000000,1.000000
+x-prop-non_desktop 0
+output DP-4.3
+crtc 0
+mode 2560x1440
+pos 3986x0
+primary
+rate 59.95
+x-prop-non_desktop 0

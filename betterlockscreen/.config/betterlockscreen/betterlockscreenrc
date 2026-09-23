@@ -1,0 +1,25 @@
+# Catppuccin Mocha. Only overrides; betterlockscreen assigns its
+# defaults before sourcing this file.
+
+ringcolor=b4befeff
+insidecolor=1e1e2eaa
+separatorcolor=11111bff
+
+ringvercolor=89b4faff
+insidevercolor=1e1e2eaa
+verifcolor=89b4faff
+
+ringwrongcolor=f38ba8ff
+insidewrongcolor=f38ba8ff
+wrongcolor=f38ba8ff
+
+keyhlcolor=cba6f7ff
+bshlcolor=fab387ff
+
+timecolor=cdd6f4ff
+greetercolor=cdd6f4ff
+layoutcolor=a6adc8ff
+modifcolor=f9e2afff
+
+loginbox=313244cc
+bgcolor=1e1e2eff
