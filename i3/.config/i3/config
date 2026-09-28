@@ -1,0 +1,120 @@
+### i3 config — base + Catppuccin Mocha ###
+### Terminal ###
+set $term ghostty
+### Mod key ###
+set $mod Mod4
+### Workspace Layout ###
+workspace_layout stacking
+focus_wrapping force
+
+### Print Screen ###
+bindsym Print exec --no-startup-id maim ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
+bindsym Shift+Print exec --no-startup-id maim -s ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
+
+### Font ###
+# Used for window titles and i3bar (if not overridden elsewhere)
+font pango:JetBrains Mono 8
+### Theme (Catppuccin Mocha palette, inlined directly — see note below) ###
+set $rosewater #f5e0dc
+set $flamingo #f2cdcd
+set $pink #f5c2e7
+set $mauve #cba6f7
+set $red #f38ba8
+set $maroon #eba0ac
+set $peach #fab387
+set $yellow #f9e2af
+set $green #a6e3a1
+set $teal #94e2d5
+set $sky #89dceb
+set $sapphire #74c7ec
+set $blue #89b4fa
+set $lavender #b4befe
+set $text #cdd6f4
+set $subtext1 #bac2de
+set $subtext0 #a6adc8
+set $overlay2 #9399b2
+set $overlay1 #7f849c
+set $overlay0 #6c7086
+set $surface2 #585b70
+set $surface1 #45475a
+set $surface0 #313244
+set $base #1e1e2e
+set $mantle #181825
+set $crust #11111b
+
+# class                   border      bg        text     indicator    child_border
+client.focused            $lavender   $base     $text    $rosewater   $lavender
+client.focused_inactive   $overlay0   $base     $text    $rosewater   $overlay0
+client.unfocused          $overlay0   $base     $text    $rosewater   $overlay0
+client.urgent             $peach      $base     $peach   $overlay0    $peach
+client.placeholder        $overlay0   $base     $text    $overlay0    $overlay0
+client.background         $base
+### Window appearance ###
+gaps inner 4
+gaps outer 4
+default_border pixel 2
+smart_borders no_gaps
+for_window [class="^.*"] border pixel 2
+### Autostart ###
+exec_always --no-startup-id setxkbmap -layout us -variant mac
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id pkill picom; picom -b --config ~/.config/picom.conf
+exec_always --no-startup-id export GTK_THEME=Adwaita-dark
+exec --no-startup-id /usr/lib/xdg-desktop-portal-gtk &
+exec --no-startup-id /usr/lib/xdg-desktop-portal &
+exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
+exec_always --no-startup-id xrandr --output DP-2 --set Backlight 100
+
+### Apps ###
+set $term ghostty
+set $menu rofi -show drun -show-icons
+### System bindings ###
+bindsym $mod+Return         exec $term
+bindsym $mod+d              exec $menu
+bindsym $mod+shift+x        exec betterlockscreen --lock
+bindsym $mod+Shift+q        kill
+bindsym $mod+Shift+c        reload
+bindsym $mod+Shift+r        restart
+bindsym $mod+Shift+e        exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+### Focus ###
+bindsym $mod+h              focus left
+bindsym $mod+j              focus down
+bindsym $mod+k              focus up
+bindsym $mod+l              focus right
+bindsym $mod+a              focus parent
+bindsym $mod+space          focus mode_toggle
+### Move ###
+bindsym $mod+Shift+h        move left
+bindsym $mod+Shift+j        move down
+bindsym $mod+Shift+k        move up
+bindsym $mod+Shift+l        move right
+### Layout ###
+bindsym $mod+b              split h
+bindsym $mod+v              split v
+bindsym $mod+f              fullscreen toggle
+bindsym $mod+s              layout stacking
+bindsym $mod+w              layout tabbed
+bindsym $mod+e              layout toggle split
+bindsym $mod+Shift+space    floating toggle
+### Workspaces ###
+bindsym $mod+1              workspace number 1
+bindsym $mod+2              workspace number 2
+bindsym $mod+3              workspace number 3
+bindsym $mod+4              workspace number 4
+bindsym $mod+5              workspace number 5
+bindsym $mod+Shift+1        move container to workspace number 1
+bindsym $mod+Shift+2        move container to workspace number 2
+bindsym $mod+Shift+3        move container to workspace number 3
+bindsym $mod+Shift+4        move container to workspace number 4
+bindsym $mod+Shift+5        move container to workspace number 5
+
+### Resize mode ###
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym h resize shrink width  10 px or 10 ppt
+    bindsym j resize grow   height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow   width  10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
