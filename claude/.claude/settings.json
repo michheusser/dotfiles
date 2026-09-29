@@ -19,7 +19,7 @@
       "Bash(git reset:*)",
       "Bash(git clean:*)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "hooks": {
     "UserPromptSubmit": [
@@ -28,6 +28,18 @@
           {
             "type": "command",
             "command": "$HOME/.claude/hooks/research-context.sh"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/subagent-report-gate.sh",
+            "timeout": 10
           }
         ]
       }
