@@ -43,6 +43,17 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/reply-gate.sh",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "outputStyle": "Precise",

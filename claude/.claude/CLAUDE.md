@@ -12,9 +12,12 @@
 This section is here rather than in the output style because a subagent inherits
 CLAUDE.md and does not inherit the output style. It binds every agent, including you.
 
-- Tag every technical claim: `[verified]` read or observed this session, `[known]` from
-  training, `[inferred]` reasoned but unconfirmed, `[unknown]` not answerable yet.
-  `[verified]` requires naming the file and line.
+- Tag every technical claim: `[verified]` researched or read in this same answer,
+  `[known]` from training, `[inferred]` reasoned but unconfirmed, `[unknown]` not
+  answerable yet. `[verified]` requires naming the file and line.
+- A tag does not survive a turn either. These files are edited continuously, so a read
+  from an earlier turn is stale: re-read the line before restating a claim about it, or
+  downgrade the claim to `[inferred]` and say it came from an earlier read.
 - A tag does not survive a hop. A claim taken from another agent's report is not
   verified by that report. Either read it yourself and name file and line, or attribute
   it and mark it unverified.
