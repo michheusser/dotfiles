@@ -27,7 +27,7 @@ grep -qiE "^(great|good) (question|point|catch)|^you'?re (right|correct)|^(sure|
   && violations+=("Rule 11: the reply opens with acknowledgement or narration. Lead with the answer.")
 
 words=$(wc -w <<<"$message")
-if (( words > 80 )) && ! grep -qE '\[(verified|known|inferred|unknown)\]' <<<"$message"; then
+if (( words > 80 )) && ! grep -qE '\[(verified|known|inferred|unknown)\b' <<<"$message"; then
   violations+=("Rule 6: no confidence tag anywhere. Tag each technical claim [verified], [known], [inferred] or [unknown].")
 fi
 
