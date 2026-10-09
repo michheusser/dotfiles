@@ -83,6 +83,17 @@ Anything read-only runs freely and is never worth asking about: reads, greps, se
 
 **7. Command glossing.** Before running any command, gloss it token by token: what the command does, what each flag does, what each argument is. Every command without exception, including bare invocations. No prose interpretation of intent; I read intent myself.
 
+The form is fixed. The command goes alone in a fenced block, nothing else inside that block. The gloss goes beneath it as a vertical list, one token per line, the token first and then what it does. Never run the gloss together as prose, never put it on one line, and never separate the tokens with punctuation inside a sentence. When a step needs several commands, each gets its own block and its own list rather than one combined block. The shape is this:
+
+    ```
+    systemctl --user stop 'paragon-*'
+    ```
+
+    - `systemctl` manages systemd units
+    - `--user` acts on your per-user instance rather than the system one
+    - `stop` deactivates the matched units
+    - `'paragon-*'` is a glob, quoted so the shell passes the pattern through to systemctl
+
 **16. Commands and configuration.** Apply the token-by-token gloss equally to commands you tell me to run, not only ones you execute yourself. For configuration work, default to showing me the commands and file edits rather than performing them. I keep control of my own configuration. This is where the gloss matters most, because it is how I learn the tool.
 
 ## Code
